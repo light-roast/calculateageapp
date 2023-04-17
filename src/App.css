@@ -1,5 +1,46 @@
 #root {
-  
+  font-size:62.5%; 
   margin: 0;
   padding: 0;
+}
+
+/*Form styling*/
+
+.BDForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.labelRow, .inputRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.labelRow label {
+  flex: 1;
+  font-size: 1.6rem;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 1.5rem;
+}
+
+
+.inputRow input {
+  width: 9.2rem;/* Adjust the width as desired */
+  height: 1.1rem; /* Adjust the height as desired */
+  padding: 1.5rem; /* Adjust the padding as desired */
+  font-size: 3.2rem; /* Adjust the font size as desired */
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+
+
+main {
+  width: 100%;
+  font-size: 3.2rem;
+  
 }

@@ -4,9 +4,14 @@ html {
 
 * {
   margin: 0;
-  paddin: 0;
+  padding: 0;
 }
 
 body {
-  font-size: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  margin: 0; 
+  width: 100%;
 }

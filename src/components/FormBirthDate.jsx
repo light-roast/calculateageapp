@@ -2,12 +2,16 @@ export default function FormBirthDate() {
     return (
         <form 
         className="BDForm">
-            <label for="day">Day</label>
-            <input type="number" name="day"></input>
-            <label for="month">Month</label>
-            <input type="number" name="month"></input>
-            <label for="year">Year</label>
-            <input type="number" name="year"></input>
+            <div className="labelRow">
+                <label htmlFor="day">Day</label>
+                <label htmlFor="month">Month</label>
+                <label htmlFor="year">Year</label>
+            </div>
+            <div className="inputRow">
+                <input type="number" name="day" />
+                <input type="number" name="month" />
+                <input type="number" name="year" />
+            </div>
         </form>
     )
 };
