@@ -29,10 +29,10 @@
 
 
 .inputRow input {
-  width: 9.2rem;/* Adjust the width as desired */
-  height: 1.1rem; /* Adjust the height as desired */
-  padding: 1.5rem; /* Adjust the padding as desired */
-  font-size: 3.2rem; /* Adjust the font size as desired */
+  width: 9rem;
+  height: 1.1rem; 
+  padding: 1.5rem; 
+  font-size: 3.2rem;
   margin-left: 1em;
   margin-right: 1em;
 }
