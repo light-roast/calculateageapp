@@ -50,7 +50,9 @@ export default function FormBirthDate({calculate, requiredDay, requiredMonth, re
     
     function handleSubmit(e) {
         e.preventDefault();
-
+        if (validDay && validMonth && validYear){
+            calculate()
+        }
     }
 
     return (

@@ -6,25 +6,11 @@ function App() {
   const [days, setDays] = useState('--');
   const [months, setMonths] = useState('--');
   const [years, setYears] = useState('--');
-  const [requiredDay, setRequiredDay] = useState(false);
-  const [requiredMonth, setRequiredMonth] = useState(false);
-  const [requiredYear, setRequiredYear] = useState(false);
+  
 
 
   
   function calculateRealAge(year, month, day, monthArr) {
-    if (day === undefined) {
-      setRequiredDay(true);
-      return;
-    };
-    if (month === undefined) {
-      setRequiredMonth(true);
-      return;
-    };
-    if (year === undefined) {
-      setRequiredYear(true);
-      return;
-    }
     const actualDate = new Date();
     let m = month;
     let y = year;
@@ -45,10 +31,7 @@ function App() {
 
   return (
     <main>
-      <FormBirthDate calculate={calculateRealAge} 
-      requiredDay={requiredDay} 
-      requiredMonth={requiredMonth} 
-      requiredYear={requiredYear}/>
+      <FormBirthDate calculate={calculateRealAge}/>
       <h1>{days} days, {months} months and {years} years</h1>
     </main>
   )
