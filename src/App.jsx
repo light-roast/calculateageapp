@@ -12,19 +12,33 @@ function App() {
   
   function calculateRealAge(year, month, day, monthArr) {
     const actualDate = new Date();
-    let m = month;
-    let y = year;
-    if (actualDate.getDay() < day) {
-      setDays(day+monthArr[month]);
+    let d = actualDate.getDate();
+    let m = actualDate.getMonth()+1;
+    console.log(m);
+    let y = actualDate.getFullYear();
+      
+    if (d < day) {
       m--;
+      let actualDays = d + (monthArr[m+1]);
+      let realDays = actualDays - day;
+      setDays(realDays);
+    } else {
+      let realDays = d - day;
+      setDays(realDays);
     }
 
-    if (actualDate.getMonth() < m) {
-      setMonths(m+12);
+    if (m < month) {
       y--;
+      m += 12;
+      let realMonths = m - month;
+      setMonths(realMonths);
+    } else {
+      let realMonths = (m - month);
+      setMonths(realMonths);
     }
   
-    setYears(actualDate.getFullYear()-y);
+    setYears(y-year);
+
      
   }
     

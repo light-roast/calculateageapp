@@ -1,12 +1,15 @@
 import { useState } from "react"
 
-export default function FormBirthDate({calculate, requiredDay, requiredMonth, requiredYear}) {
+export default function FormBirthDate({calculate}) {
     const [day, setDay] = useState(undefined);
     const [month, setMonth] = useState(undefined);
     const [year, setYear] = useState(undefined);
     const [validDay, setValidDay] = useState(true);
     const [validMonth, setValidMonth] = useState(true);
     const [validYear, setValidYear] = useState(true);
+    const [requiredDay, setRequiredDay] = useState(false);
+    const [requiredMonth, setRequiredMonth] = useState(false);
+    const [requiredYear, setRequiredYear] = useState(false);
     let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     function handleDayChange(e) {
@@ -50,24 +53,42 @@ export default function FormBirthDate({calculate, requiredDay, requiredMonth, re
     
     function handleSubmit(e) {
         e.preventDefault();
+        if (day === undefined && month === undefined && year === undefined) {
+            alert('Please fill the birth date format inputs');
+            return;
+        };
+        if (day === undefined){
+            setRequiredDay(true);
+            return;
+        };
+        if (month === undefined) {
+            setRequiredMonth(true);
+            return;
+        };
+        if (year === undefined) {
+            setRequiredYear(true);
+            return;
+        };
+
         if (validDay && validMonth && validYear){
-            calculate()
-        }
+            calculate(year, month, day, daysInMonth);
+        };
     }
 
     return (
         <form 
         className="BDForm"
-        handleSubmit={handleSubmit}>
+        onSubmit={handleSubmit}>
             <section className="labelRow">
                 <label htmlFor="day">Day</label>
                 <label htmlFor="month">Month</label>
                 <label htmlFor="year">Year</label>
             </section>
             <section className="inputRow">
-                <input type="number" className={validDay} id={requiredDay} name="day" onChange={handleDayChange} required/>
-                <input type="number" className={validMonth} id={requiredMonth} name="month" onChange={handleMonthChange}/>
-                <input type="number" className={validYear} id={requiredYear} name="year" onChange={handleYearChange}/>
+                <input type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange} required/>
+                <input type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} name="month" onChange={handleMonthChange}/>
+                <input type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} name="year" onChange={handleYearChange}/>
+                <input type="submit"></input>
             </section>
             <section>
                 {validDay ? (<div></div>) : (<div>Must be a valid day</div>)}
