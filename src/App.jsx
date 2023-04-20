@@ -46,7 +46,7 @@ function App() {
   return (
     <main>
       <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{days} days, {months} months and {years} years</h1>
+      <h1>{days} días, {months} meses y {years} años</h1>
     </main>
   )
 }

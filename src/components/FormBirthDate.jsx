@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function FormBirthDate({calculate}) {
     const [day, setDay] = useState(undefined);
@@ -10,7 +10,28 @@ export default function FormBirthDate({calculate}) {
     const [requiredDay, setRequiredDay] = useState(false);
     const [requiredMonth, setRequiredMonth] = useState(false);
     const [requiredYear, setRequiredYear] = useState(false);
-    let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const [daysInMonth, setDaysInMonth] = useState([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]);
+
+    useEffect(() => {
+        if (month === 2 && day===29 && ((year % 4 === 0) && (year % 100 !== 0 || year % 400 === 0))) {
+            setDaysInMonth(prevDaysInMonth => {
+                const updatedDaysInMonth = [...prevDaysInMonth]; 
+                updatedDaysInMonth[1] = 29;
+                return updatedDaysInMonth;
+              });
+        } else {
+            setDaysInMonth(prevDaysInMonth => {
+                const updatedDaysInMonth = [...prevDaysInMonth]; 
+                updatedDaysInMonth[1] = 28;
+                return updatedDaysInMonth;
+        })};
+
+        if (day > daysInMonth[month - 1]) {
+            setValidDay(false);
+        } else {
+            setValidDay(true);
+        };
+    }, [year]);
 
     function handleDayChange(e) {
         setValidDay(true);
@@ -42,13 +63,8 @@ export default function FormBirthDate({calculate}) {
           };
         if (month === undefined) {
             alert('You have to first fill in the month input space');
-        }
-        if (month === 2 && ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0)) {
-            daysInMonth[1] = 29; // Update days in February for leap years
-        }
-        if (day > daysInMonth[month - 1]) {
-            setValidDay(false);
-        };   
+        };
+                
     };
     
     function handleSubmit(e) {
@@ -85,7 +101,7 @@ export default function FormBirthDate({calculate}) {
                 <label htmlFor="year">Year</label>
             </section>
             <section className="inputRow">
-                <input type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange} required/>
+                <input type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange}/>
                 <input type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} name="month" onChange={handleMonthChange}/>
                 <input type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} name="year" onChange={handleYearChange}/>
                 <input type="submit"></input>
@@ -98,3 +114,8 @@ export default function FormBirthDate({calculate}) {
         </form>
     );
 };
+
+
+
+
+
