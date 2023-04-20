@@ -13,7 +13,8 @@ export default function FormBirthDate({calculate}) {
     const [daysInMonth, setDaysInMonth] = useState([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]);
 
     useEffect(() => {
-        if (month === 2 && day===29 && ((year % 4 === 0) && (year % 100 !== 0 || year % 400 === 0))) {
+        
+        if ((0 === year % 4) && (0 !== year % 100) || (0 === year % 400)) {
             setDaysInMonth(prevDaysInMonth => {
                 const updatedDaysInMonth = [...prevDaysInMonth]; 
                 updatedDaysInMonth[1] = 29;
@@ -24,14 +25,19 @@ export default function FormBirthDate({calculate}) {
                 const updatedDaysInMonth = [...prevDaysInMonth]; 
                 updatedDaysInMonth[1] = 28;
                 return updatedDaysInMonth;
-        })};
+        });
+          };
 
-        if (day > daysInMonth[month - 1]) {
+        
+    }, [year]);
+
+    useEffect(() => {
+        if(day > daysInMonth[1]) {
             setValidDay(false);
         } else {
             setValidDay(true);
         };
-    }, [year]);
+    }, [daysInMonth]);
 
     function handleDayChange(e) {
         setValidDay(true);
