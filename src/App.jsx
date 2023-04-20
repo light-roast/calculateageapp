@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import FormBirthDate from './components/FormBirthDate'
+import RealAge from './components/RealAge';
 
 function App() {
   const [days, setDays] = useState('--');
@@ -41,14 +42,71 @@ function App() {
 
      
   }
-    
-
-  return (
-    <main>
+  if(days === 1 && months === 1 && years === 1) {
+    return (
+      <main>
       <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{days} días, {months} meses y {years} años</h1>
-    </main>
-  )
+      <h1>{years} año, {months} mes y {days} día</h1>
+      </main>
+      );
+  } else if (days === 1 && months === 1) {
+    return (
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} mes y {days} día</h1>
+      </main>
+      );
+  } else if (days === 1 && years === 1) {
+    return (
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} meses y {days} día</h1>
+      </main>
+      );
+  } else if (years === 1 && months === 1) {
+    return (
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} año, {months} mese y {days} días</h1>
+      </main>
+      );
+  } else if (months === 1) {
+    return (
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} mes y {days} días</h1>
+      </main>
+      );
+  } else if (days === 1) {
+    return(
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} meses y {days} día </h1>
+      </main>
+    );
+  } else if(days === '--' || months === '--' || years === '--') {
+    return(
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} meses y {days} días </h1>
+      </main>
+    );
+  } else if (years === 1) {
+    return(
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} año, {months} mes y {days} día </h1>
+      </main>
+    );
+  } else {
+    return(
+      <main>
+      <FormBirthDate calculate={calculateRealAge}/>
+      <h1>{years} años, {months} meses y {days} días </h1>
+      </main>
+    );
+  };
+
 }
 
 export default App
