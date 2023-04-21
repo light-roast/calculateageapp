@@ -32,7 +32,7 @@ export default function FormBirthDate({calculate}) {
     }, [year]);
 
     useEffect(() => {
-        if(day > daysInMonth[1]) {
+        if (day > daysInMonth[month-1]) {
             setValidDay(false);
         } else {
             setValidDay(true);

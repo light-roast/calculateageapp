@@ -1,13 +1,38 @@
-import { useState } from 'react'
-import './App.css'
-import FormBirthDate from './components/FormBirthDate'
-import RealAge from './components/RealAge';
+import { useEffect, useState } from 'react';
+import './App.css';
+import FormBirthDate from './components/FormBirthDate';
 
 function App() {
   const [days, setDays] = useState('--');
   const [months, setMonths] = useState('--');
   const [years, setYears] = useState('--');
-  
+  const [daysNum, setDaysNum] = useState('days');
+  const [monthsNum, setMonthsNum] = useState('months');
+  const [yearsNum, setYearsNum] = useState('years');
+
+  useEffect(()=> {
+    if (days < 1 && days > 1 || days === '--') {
+      setDaysNum('days');
+    } else {
+      setDaysNum('day');
+    };
+  }, [days]);
+
+  useEffect(()=> {
+    if (months < 1 && months > 1 || months === '--') {
+      setMonthsNum('months');
+    } else {
+      setMonthsNum('month');
+    };
+  }, [months]);
+
+  useEffect(()=> {
+    if (years < 1 && years > 1 || years === '--') {
+      setYearsNum('years');
+    } else {
+      setYearsNum('year');
+    };
+  }, [years]);
 
 
   
@@ -39,74 +64,17 @@ function App() {
     }
   
     setYears(y-year);
-
-     
-  }
-  if(days === 1 && months === 1 && years === 1) {
-    return (
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} año, {months} mes y {days} día</h1>
-      </main>
-      );
-  } else if (days === 1 && months === 1) {
-    return (
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} mes y {days} día</h1>
-      </main>
-      );
-  } else if (days === 1 && years === 1) {
-    return (
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} meses y {days} día</h1>
-      </main>
-      );
-  } else if (years === 1 && months === 1) {
-    return (
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} año, {months} mese y {days} días</h1>
-      </main>
-      );
-  } else if (months === 1) {
-    return (
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} mes y {days} días</h1>
-      </main>
-      );
-  } else if (days === 1) {
-    return(
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} meses y {days} día </h1>
-      </main>
-    );
-  } else if(days === '--' || months === '--' || years === '--') {
-    return(
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} meses y {days} días </h1>
-      </main>
-    );
-  } else if (years === 1) {
-    return(
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} año, {months} mes y {days} día </h1>
-      </main>
-    );
-  } else {
-    return(
-      <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1>{years} años, {months} meses y {days} días </h1>
-      </main>
-    );
   };
+
+  return (
+    <main>
+    <FormBirthDate calculate={calculateRealAge}/>
+    <h1>{years} {yearsNum}, {months} {monthsNum} and {days} {daysNum}</h1>
+    </main>
+    );
+
+ 
 
 }
 
-export default App
+export default App;
