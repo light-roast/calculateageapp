@@ -11,7 +11,7 @@ function App() {
   const [yearsNum, setYearsNum] = useState('years');
 
   useEffect(()=> {
-    if (days < 1 && days > 1 || days === '--') {
+    if (days !== 1) {
       setDaysNum('days');
     } else {
       setDaysNum('day');
@@ -19,7 +19,7 @@ function App() {
   }, [days]);
 
   useEffect(()=> {
-    if (months < 1 && months > 1 || months === '--') {
+    if (months !== 1) {
       setMonthsNum('months');
     } else {
       setMonthsNum('month');
@@ -27,7 +27,7 @@ function App() {
   }, [months]);
 
   useEffect(()=> {
-    if (years < 1 && years > 1 || years === '--') {
+    if (years !== 1) {
       setYearsNum('years');
     } else {
       setYearsNum('year');
