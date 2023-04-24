@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function FormBirthDate({calculate}) {
+    const dayRef = useRef(null);
+    const monthRef = useRef(null);
+    const yearRef = useRef(null);
     const [day, setDay] = useState(undefined);
     const [month, setMonth] = useState(undefined);
     const [year, setYear] = useState(undefined);
@@ -40,35 +43,38 @@ export default function FormBirthDate({calculate}) {
     }, [daysInMonth]);
 
     function handleDayChange(e) {
-        setValidDay(true);
         const day = e.target.value;
         setDay(day);
         if (day < 1 || day > 31) {
             setValidDay(false);
+        } else {
+            setValidDay('true');
         };
         
     };
 
     function handleMonthChange(e) {
-        setValidMonth(true);
         const month = e.target.value;
         setMonth(month);
         if (month < 1 || month > 12) {
             setValidMonth(false);
+        } else {
+            setValidMonth(true);
         };         
     };
 
     function handleYearChange(e) {
-        setValidYear(true);        
         const year= e.target.value;
         setYear(year);
         const actualDate = new Date();    
         if (year < 0 || year > actualDate.getFullYear()) 
         {
             setValidYear(false);
+          } else {
+            setValidYear(true);
           };
-        if (month === undefined) {
-            alert('You have to first fill in the month input space');
+        if (month === undefined || day === undefined || month === "" || day === "") {
+            alert('You have to first fill in the month and day inputs');
         };
                 
     };
@@ -81,22 +87,25 @@ export default function FormBirthDate({calculate}) {
         };
         if (day === undefined){
             setRequiredDay(true);
+            setValidDay(false);
             return;
         };
         if (month === undefined) {
             setRequiredMonth(true);
+            setValidMonth(false);
             return;
         };
         if (year === undefined) {
             setRequiredYear(true);
+            setValidYear(false);
             return;
         };
 
-        if (validDay && validMonth && validYear){
+        if (validDay && validMonth && validYear && !requiredDay && !requiredMonth && !requiredYear){
             calculate(year, month, day, daysInMonth);
         };
-    }
-
+        e.target.reset();
+    };
     return (
         <form 
         className="BDForm"
@@ -107,11 +116,14 @@ export default function FormBirthDate({calculate}) {
                 <label htmlFor="year">Year</label>
             </section>
             <section className="inputRow">
-                <input type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange}/>
-                <input type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} name="month" onChange={handleMonthChange}/>
-                <input type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} name="year" onChange={handleYearChange}/>
-                <input type="submit"></input>
+                <input  ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange} placeholder="DD"/>
+                <input  ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} name="month" onChange={handleMonthChange} placeholder="MM"/>
+                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} name="year" onChange={handleYearChange} placeholder="YYY"/>
             </section>
+            <button type="submit">
+                <img src="../../assets/images/icon-arrow.svg" alt="Button Image" />
+            </button>
+            
             <section>
                 {validDay ? (<div></div>) : (<div>Must be a valid day</div>)}
                 {validMonth ? (<div></div>) : (<div>Must be a valid month</div>)}
@@ -120,8 +132,3 @@ export default function FormBirthDate({calculate}) {
         </form>
     );
 };
-
-
-
-
-

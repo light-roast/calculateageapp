@@ -69,7 +69,9 @@ function App() {
   return (
     <main>
     <FormBirthDate calculate={calculateRealAge}/>
-    <h1>{years} {yearsNum}, {months} {monthsNum} and {days} {daysNum}</h1>
+    <h1><span className='output-year'>{years}</span> {yearsNum}</h1>
+    <h1><span className='output-month'>{months}</span> {monthsNum}</h1>
+    <h1><span className='output-day'>{days}</span> {daysNum}</h1>
     </main>
     );
 
