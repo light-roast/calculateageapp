@@ -1,25 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
-
-#root {
-  font-size:62.5%; 
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-
 /*Form styling*/
-
 .BDForm {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  width: 40rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/*Labels*/
+.dayL {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.monthL {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.yearL {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+#iDay {
+  grid-column: 1/2;
+  grid-row: 2/3;
 
 }
 
-.labelRow, .inputRow {
-  display: flex;
-  justify-content: space-between;
+#iMonth {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+#iYear{
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+button {
+  border-radius: 50%;
+  grid-column: 4/5;
+  grid-row: 3/4;
 }
 
 input {
@@ -27,35 +49,8 @@ input {
   font-family: 'Poppins', sans-serif;
 }
 
-.validDay,
-.validMonth,
-.validYear {
-  color: gray;
-}
-
-.labelRow label {
-  flex: 1;
-  font-size: 1.6rem;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding: 1.5rem;
-  font-size: 3.2rem;
-}
-
-
-.inputRow input {
-  width: 9rem;
-  height: 1.1rem; 
-  padding: 1.5rem; 
-  font-size: 3.2rem;
-  margin-left: 1em;
-  margin-right: 1em;
-}
 
 
 
-main {
-  width: 100%;
-  font-size: 3.2rem;
-  
-}
+
+

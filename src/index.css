@@ -1,17 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
 html { 
   font-size:62.5%; 
-}
+  
+  }
 
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
+#root {
+  width: 100%;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; 
-  margin: 0; 
-  width: 100%;
+  min-height: 100vh;
+ }
+
+ main {
+  width: 40rem;
+  font-size: 3.2rem;  
+  height: 30rem;
+  margin: auto;
 }
+
+

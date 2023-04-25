@@ -110,25 +110,25 @@ export default function FormBirthDate({calculate}) {
         <form 
         className="BDForm"
         onSubmit={handleSubmit}>
-            <section className="labelRow">
-                <label htmlFor="day">Day</label>
-                <label htmlFor="month">Month</label>
-                <label htmlFor="year">Year</label>
-            </section>
-            <section className="inputRow">
-                <input  ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} name="day" onChange={handleDayChange} placeholder="DD"/>
-                <input  ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} name="month" onChange={handleMonthChange} placeholder="MM"/>
-                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} name="year" onChange={handleYearChange} placeholder="YYY"/>
-            </section>
+            
+                <label className="dayL" htmlFor="day">Day</label>
+                <label className="monthL" htmlFor="month">Month</label>
+                <label className="yearL" htmlFor="year">Year</label>
+            
+            
+                <input  ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
+                <input  ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
+                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYY"/>
+            
             <button type="submit">
                 <img src="../../assets/images/icon-arrow.svg" alt="Button Image" />
             </button>
             
-            <section>
+            
                 {validDay ? (<div></div>) : (<div>Must be a valid day</div>)}
                 {validMonth ? (<div></div>) : (<div>Must be a valid month</div>)}
                 {validYear ? (<div></div>) : (<div>Must be in the past</div>)}
-            </section>
+            
         </form>
     );
 };
