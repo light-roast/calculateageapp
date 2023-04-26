@@ -17,13 +17,54 @@ html {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color: hsl(0, 0%, 86%);
  }
 
  main {
-  width: 40rem;
+  padding: 2.5rem;
+  padding-right: 0;
+  width: 60rem;
   font-size: 3.2rem;  
-  height: 30rem;
   margin: auto;
+  background-color: white;
+  border-bottom-right-radius: 35%;
+  border-top-right-radius: 3%;
+  border-bottom-left-radius: 3%;
+  border-top-left-radius: 3%;
+  display: grid;
+
+}
+
+#form {
+  grid-column: 1/5;
+  grid-row: 1/4;
 }
 
 
+
+
+span {
+  color: hsl(259, 100%, 65%);
+}
+
+.output-year {
+  grid-column: 1/4;
+  grid-row: 4/5;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.output-month {
+  grid-column: 1/4;
+  grid-row: 5/6;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+.output-day {
+  grid-column: 1/4;
+  grid-row: 6/7;
+  font-weight: bold;
+  font-style: italic;
+}

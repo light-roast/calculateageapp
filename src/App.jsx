@@ -68,10 +68,11 @@ function App() {
 
   return (
     <main>
-      <FormBirthDate calculate={calculateRealAge}/>
-      <h1><span className='output-year'>{years}</span> {yearsNum}</h1>
-      <h1><span className='output-month'>{months}</span> {monthsNum}</h1>
-      <h1><span className='output-day'>{days}</span> {daysNum}</h1>
+      <FormBirthDate calculate={calculateRealAge} id="form"/>
+      
+      <h1 className='output-year'><span>{years}</span> {yearsNum}</h1>
+      <h1 className='output-month'><span >{months}</span> {monthsNum}</h1>
+      <h1 className='output-day'><span>{days}</span> {daysNum}</h1>
     </main>
     );
 

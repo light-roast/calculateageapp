@@ -111,23 +111,26 @@ export default function FormBirthDate({calculate}) {
         className="BDForm"
         onSubmit={handleSubmit}>
             
-                <label className="dayL" htmlFor="day">Day</label>
-                <label className="monthL" htmlFor="month">Month</label>
-                <label className="yearL" htmlFor="year">Year</label>
+                <label className="dayL" htmlFor="day">DAY</label>
+                <label className="monthL" htmlFor="month">MONTH</label>
+                <label className="yearL" htmlFor="year">YEAR</label>
             
             
                 <input  ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
                 <input  ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
-                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYY"/>
-            
+                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
+                <hr></hr>
             <button type="submit">
                 <img src="../../assets/images/icon-arrow.svg" alt="Button Image" />
             </button>
             
-            
-                {validDay ? (<div></div>) : (<div>Must be a valid day</div>)}
-                {validMonth ? (<div></div>) : (<div>Must be a valid month</div>)}
-                {validYear ? (<div></div>) : (<div>Must be in the past</div>)}
+        
+                {validDay ? <div></div> : <div className="dayD">Must be a valid day</div>}
+                {requiredDay ? <div className="dayD">This field is required</div> : <div></div> }
+                {validMonth ? null : <div className="monthD">Must be a valid month</div>}
+                {requiredMonth ? <div className="monthD">This field is required</div> : <div></div>}
+                {validYear ? <div></div> : <div className="yearD">Must be in the past</div>}
+                {requiredYear ? <div className="yearD">This field is required</div> : <div></div>}
             
         </form>
     );
