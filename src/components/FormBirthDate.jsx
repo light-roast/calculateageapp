@@ -10,10 +10,23 @@ export default function FormBirthDate({calculate}) {
     const [validDay, setValidDay] = useState(true);
     const [validMonth, setValidMonth] = useState(true);
     const [validYear, setValidYear] = useState(true);
+    const [validDate, setValidDate] = useState(true);
     const [requiredDay, setRequiredDay] = useState(false);
     const [requiredMonth, setRequiredMonth] = useState(false);
     const [requiredYear, setRequiredYear] = useState(false);
     const [daysInMonth, setDaysInMonth] = useState([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]);
+
+    useEffect(() => {
+        setRequiredDay(false);
+    }, [day]);
+
+    useEffect(() => {
+        setRequiredMonth(false);
+    }, [month]);
+
+    useEffect(() => {
+        setRequiredYear(false);
+    }, [year])
 
     useEffect(() => {
         
@@ -73,33 +86,69 @@ export default function FormBirthDate({calculate}) {
           } else {
             setValidYear(true);
           };
-        if (month === undefined || day === undefined || month === "" || day === "") {
-            alert('You have to first fill in the month and day inputs');
-        };
+        
                 
     };
     
     function handleSubmit(e) {
         e.preventDefault();
-        if (day === undefined && month === undefined && year === undefined) {
-            alert('Please fill the birth date format inputs');
-            return;
-        };
-        if (day === undefined){
+        
+        if (day === undefined && month === undefined && year === undefined){
             setRequiredDay(true);
-            setValidDay(false);
+            setValidDay(true);
+
+            setRequiredMonth(true);
+            setValidMonth(true);
+
+            setRequiredYear(true);
+            setValidYear(true);
             return;
+        
         };
+
+        if (day === undefined && month === undefined) {
+            setRequiredDay(true);
+            setValidDay(true);
+
+            setRequiredMonth(true);
+            setValidMonth(true);
+            return;
+        }
+
+        if (day === undefined && year === undefined) {
+            setRequiredDay(true);
+            setValidDay(true);
+
+            setRequiredYear(true);
+            setValidYear(true);
+            return;
+        }
+
+        if (month === undefined && year === undefined) {
+            setRequiredMonth(true);
+            setValidMonth(true);
+            
+            setRequiredYear(true);
+            setValidYear(true);
+            return;
+        }
         if (month === undefined) {
             setRequiredMonth(true);
-            setValidMonth(false);
+            setValidMonth(true);
             return;
         };
+
         if (year === undefined) {
             setRequiredYear(true);
-            setValidYear(false);
+            setValidYear(true);
             return;
         };
+
+        if(day === undefined) {
+            setRequiredDay(true);
+            setValidDay(true);
+            return;
+        }
 
         if (validDay && validMonth && validYear && !requiredDay && !requiredMonth && !requiredYear){
             calculate(year, month, day, daysInMonth);
@@ -126,11 +175,11 @@ export default function FormBirthDate({calculate}) {
             
         
                 {validDay ? <div></div> : <div className="dayD">Must be a valid day</div>}
-                {requiredDay ? <div className="dayD">This field is required</div> : <div></div> }
+                {requiredDay ? <div className="dayR">This field is required</div> : <div></div> }
                 {validMonth ? null : <div className="monthD">Must be a valid month</div>}
-                {requiredMonth ? <div className="monthD">This field is required</div> : <div></div>}
+                {requiredMonth ? <div className="monthR">This field is required</div> : <div></div>}
                 {validYear ? <div></div> : <div className="yearD">Must be in the past</div>}
-                {requiredYear ? <div className="yearD">This field is required</div> : <div></div>}
+                {requiredYear ? <div className="yearR">This field is required</div> : <div></div>}
             
         </form>
     );
