@@ -74,6 +74,7 @@ export default function FormBirthDate({calculate}) {
     }, [month]);
 
     function handleDayChange(e) {
+        setRequiredDay(false);
         const day = e.target.value;
         setDay(day);
         if (day < 1 || day > 31) {
@@ -85,6 +86,7 @@ export default function FormBirthDate({calculate}) {
     };
 
     function handleMonthChange(e) {
+        setRequiredMonth(false);
         const month = e.target.value;
         setMonth(month);
         if (month < 1 || month > 12) {
@@ -95,6 +97,7 @@ export default function FormBirthDate({calculate}) {
     };
 
     function handleYearChange(e) {
+        setRequiredYear(false);
         const year= e.target.value;
         setYear(year);
         const actualDate = new Date();    
@@ -173,10 +176,19 @@ export default function FormBirthDate({calculate}) {
             setDay(undefined);
             setMonth(undefined);
             setYear(undefined);
-        } else {
+            setValidDay(true);
+            setValidMonth(true);
+            setValidYear(true);
+            setValidDate(true);
+                 } else {
             setDay(undefined);
             setMonth(undefined);
-            setYear(undefined); 
+            setYear(undefined);
+            setValidDay(true);
+            setValidMonth(true);
+            setValidYear(true);
+            setValidDate(true);
+        
         };
         e.target.reset();
     };
