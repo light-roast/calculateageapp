@@ -138,5 +138,5 @@ I would like to see a solution for this project that uses only flexbox, since I 
 
 ## Acknowledgments
 
-[Juan Sebastián Silva] (https://github.com/juansesilva) helped me with his expert feedback on the app's behavior and responsive design. He also helped me understand how to correctly import the icon image into the Vite React project so that it builds successfully.
+- [Juan Sebastián Silva](https://github.com/juansesilva) helped me with his expert feedback on the app's behavior and responsive design. He also helped me understand how to correctly import the icon image into the Vite React project so that it builds successfully.
 
