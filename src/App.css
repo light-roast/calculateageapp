@@ -34,6 +34,7 @@ input {
   border-radius: 5%;
   border: 1px gray;
   border-style:groove;
+  cursor: pointer;
 }
 
 
@@ -113,6 +114,7 @@ hr {
   grid-column: 1/5;
   grid-row: 3/4;
   align-self: center;
+  width: 85%;
   
 }
 
@@ -120,20 +122,25 @@ button {
   border-radius: 50%;
   grid-column: 4/5;
   grid-row: 3/4;
-  height: auto;
+  width: 6.4rem;;
+  height: 6.4rem;
   background-color: hsl(259, 100%, 65%);
   border: none;
   padding: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0rem .4rem 0rem #ccc; 
+  transition: all 0.2s ease-in-out;
   
 }
 
 button:hover {
   background-color: hsl(0, 0%, 8%);
+  transform: translateY(-2px);
 }
 
 img {
-  width: 85%;
-  height: 85%;
+  width: 70%;
+  height: 70%;
 }
 
 

@@ -15,6 +15,16 @@ export default function FormBirthDate({calculate}) {
     const [requiredMonth, setRequiredMonth] = useState(false);
     const [requiredYear, setRequiredYear] = useState(false);
     const [daysInMonth, setDaysInMonth] = useState([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]);
+    const [validDate, setValidDate] = useState(true);
+    const states = [day, month, year];
+        
+    useEffect(() => {
+        if (day > daysInMonth[month-1]) {
+            setValidDate(false);
+        } else {
+            setValidDate(true);
+        };
+    }, [states]);
 
     useEffect(() => {
         setRequiredDay(false);
@@ -188,7 +198,7 @@ export default function FormBirthDate({calculate}) {
                 <img src={button} alt="Button Image" />
             </button>
             
-        
+                {validDate ? <div></div> : <div className="dayD">Must be a valid date</div>}
                 {validDay ? <div></div> : <div className="dayD">Must be a valid day</div>}
                 {requiredDay ? <div className="dayR">This field is required</div> : <div></div> }
                 {validMonth ? null : <div className="monthD">Must be a valid month</div>}
