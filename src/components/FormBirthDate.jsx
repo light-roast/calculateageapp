@@ -179,9 +179,9 @@ export default function FormBirthDate({calculate}) {
                 <label id="yearL" htmlFor="year" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`}>YEAR</label>
             
             
-                <input min="1" ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
-                <input min="1" ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
-                <input min="0" ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
+                <input min="1" max="31" ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
+                <input min="1" max="12" ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
+                <input min="0" max={new Date().getFullYear()} ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
                 <hr></hr>
             <button type="submit">
                 <img src="/public/icon-arrow.svg" alt="Button Image" />
