@@ -10,7 +10,6 @@ export default function FormBirthDate({calculate}) {
     const [validDay, setValidDay] = useState(true);
     const [validMonth, setValidMonth] = useState(true);
     const [validYear, setValidYear] = useState(true);
-    const [validDate, setValidDate] = useState(true);
     const [requiredDay, setRequiredDay] = useState(false);
     const [requiredMonth, setRequiredMonth] = useState(false);
     const [requiredYear, setRequiredYear] = useState(false);
@@ -54,6 +53,14 @@ export default function FormBirthDate({calculate}) {
             setValidDay(true);
         };
     }, [daysInMonth]);
+
+    useEffect(() => {
+        if (day > daysInMonth[month-1]) {
+            setValidDay(false);
+        } else {
+            setValidDay(true);
+        };
+    }, [month]);
 
     function handleDayChange(e) {
         const day = e.target.value;
@@ -152,6 +159,13 @@ export default function FormBirthDate({calculate}) {
 
         if (validDay && validMonth && validYear && !requiredDay && !requiredMonth && !requiredYear){
             calculate(year, month, day, daysInMonth);
+            setDay(undefined);
+            setMonth(undefined);
+            setYear(undefined);
+        } else {
+            setDay(undefined);
+            setMonth(undefined);
+            setYear(undefined); 
         };
         e.target.reset();
     };
@@ -160,14 +174,14 @@ export default function FormBirthDate({calculate}) {
         className="BDForm"
         onSubmit={handleSubmit}>
             
-                <label className="dayL" htmlFor="day">DAY</label>
-                <label className="monthL" htmlFor="month">MONTH</label>
-                <label className="yearL" htmlFor="year">YEAR</label>
+                <label id="dayL" htmlFor="day" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`}>DAY</label>
+                <label id="monthL" htmlFor="month" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`}>MONTH</label>
+                <label id="yearL" htmlFor="year" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`}>YEAR</label>
             
             
-                <input  ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
-                <input  ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
-                <input  ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
+                <input min="1" ref={dayRef} type="number" className={`${validDay ? "validDay" : "invalidDay"} ${requiredDay ? "requiredDay" : "day" }`} id="iDay" name="day" onChange={handleDayChange} placeholder="DD"/>
+                <input min="1" ref={monthRef} type="number" className={`${validMonth ? "validMonth" : "invalidMonth"} ${requiredMonth ? "requiredMonth" : "month" }`} id="iMonth" name="month" onChange={handleMonthChange} placeholder="MM"/>
+                <input min="0" ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
                 <hr></hr>
             <button type="submit">
                 <img src="../../assets/images/icon-arrow.svg" alt="Button Image" />

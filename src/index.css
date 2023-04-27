@@ -22,8 +22,8 @@ html {
 
  main {
   padding: 2.5rem;
-  padding-right: 0;
-  width: 60rem;
+  padding-right: 3rem;
+  width: 55rem;
   font-size: 3.2rem;  
   margin: auto;
   background-color: white;
@@ -32,6 +32,7 @@ html {
   border-bottom-left-radius: 3%;
   border-top-left-radius: 3%;
   display: grid;
+  grid-template-columns: 1fr;
 
 }
 
@@ -67,4 +68,15 @@ span {
   grid-row: 6/7;
   font-weight: bold;
   font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+@media only screen and (max-width: 375px) {
+  main {
+    width: 100%;
+    margin: 1.2rem;
+    height: auto;
+    font-size: 2.4rem; 
+    border-bottom-right-radius: 21%;
+  }
 }

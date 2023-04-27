@@ -1,7 +1,7 @@
 /*Form styling*/
 .BDForm {
   display: grid;
-  
+  margin-right: 0;
 }
 
 /*Labels*/
@@ -11,17 +11,17 @@ label {
   margin-top: 1rem;
 }
 
-.dayL {
+#dayL {
   grid-column: 1/2;
   grid-row: 1/2;
   }
 
-.monthL {
+#monthL {
   grid-column: 2/3;
   grid-row: 1/2;
 }
 
-.yearL {
+#yearL {
   grid-column: 3/4;
   grid-row: 1/2;
 }
@@ -51,6 +51,18 @@ input {
 #iYear{
   grid-column: 3/4;
   grid-row: 2/3;
+}
+
+.invalidDay, .invalidMonth, .invalidYear, 
+.requiredDay, .requiredMonth, .requiredYear, 
+.dayD, .dayR, .monthD, .monthR,
+.yearD, .yearR  {
+  color: hsl(0, 100%, 67%);
+}
+
+input.invalidDay, input.invalidMonth, input.invalidYear,
+input.requiredDay, input.requiredMonth, input.requiredYear {
+  border-color: hsl(0, 100%, 67%);
 }
 
 
@@ -125,6 +137,15 @@ img {
 }
 
 
+input:hover {
+  border-color: hsl(259, 100%, 65%);
+}
+
+input:focus {
+  border-color: hsl(259, 100%, 65%);
+  outline: none;
+}
+
 
 
 div {
@@ -134,4 +155,52 @@ div {
 
 
 
+@media only screen and (max-width: 375px) {
+  input {
+    width: 85%
+  }
 
+  hr {
+    grid-row: 4/3;
+    margin-top: 3.5rem;
+  }
+
+  button {
+    margin-top: 3.5rem;
+    grid-column:2/3;
+    grid-row: 4/3;
+    width: 6.4rem;
+    height: 6.4rem;
+    justify-self: center;
+  }
+
+  img {
+    width: 65%;
+    height: 65%;
+    padding: 0;
+  }
+
+  .dayD {
+    font-size: .8rem;
+  }
+  
+  .monthD {
+    font-size: .8rem;
+  }
+  
+  .yearD {
+    font-size: .8rem;
+  }
+  
+  .dayR {
+    font-size: .8rem;
+  }
+  
+  .monthR {
+    font-size: .8rem;
+  }
+  
+  .yearR {
+    font-size: .8rem;
+  }
+}
