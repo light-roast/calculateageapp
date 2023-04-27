@@ -184,7 +184,7 @@ export default function FormBirthDate({calculate}) {
                 <input min="0" max={new Date().getFullYear()} ref={yearRef} type="number" className={`${validYear ? "validYear" : "invalidYear"} ${requiredYear ? "requiredYear" : "year"}`} id="iYear" name="year" onChange={handleYearChange} placeholder="YYYY"/>
                 <hr></hr>
             <button type="submit">
-                <img src="/public/icon-arrow.svg" alt="Button Image" />
+                <img src="images/icon-arrow.svg" alt="Button Image" />
             </button>
             
         
