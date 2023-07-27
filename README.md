@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/light-roast/calculateageapp)
-- Live Site URL: [Add live site URL here](https://calculate-your-real-age.netlify.app/)
+- Solution URL: [GitHub repo](https://github.com/light-roast/calculateageapp)
+- Live Site URL: [Live Site](https://calculate-your-real-age.netlify.app/)
 
 ## My process
 
